@@ -44,7 +44,6 @@ app.post("/bootcamps/:bootcamp/", validateDeveloper, (req, res) => {
 
 app.delete("/bootcamps/:bootcamp/developers/:id", (req, res) => {
   const { id, bootcamp } = req.params;
-
   const data = database.find((test) => test.bootcamp === bootcamp);
 
   if (!data) {
@@ -52,6 +51,7 @@ app.delete("/bootcamps/:bootcamp/developers/:id", (req, res) => {
   }
 
   const devIdx = data.developers.findIndex((dev) => dev.id == id);
+  console.log(devIdx);
   if (devIdx === -1) {
     return res.sendStatus(404);
   }
